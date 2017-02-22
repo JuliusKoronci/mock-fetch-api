@@ -2,7 +2,7 @@
 
 ### Description
 
-Simple wrapper around Fetch API, it accpets a json object of urls mapped to mock response data. 
+Simple wrapper around Fetch API, it accepts a json object of urls mapped to mock response data. 
 If the url is called with standard fetch, it will return the mock data without hitting your backend. 
 This way you can easily start developing your frontend and create a json tree of fake data to implement 
 for your backend without the need of a REST API.
@@ -22,24 +22,19 @@ window.fetch = Fetch({url1: {...fakeData});
 example:
 
 const urls = 
-
 {
-
     'http://test.com': {
     
         'body': "some text",
         'status_code': 201
-    },
-    
+    },   
     'http://test2.com': {
         'body': "some text"
     },
-    
     'http://test3.com': {
         'body': "some text",
         'status_code': 404
     }
-    
 };
 
 ### Requirements
