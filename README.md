@@ -14,15 +14,14 @@ npm i --save-dev igsem-mock-fetch-api
  
 ### Instructions
 In your index.js file just import the script and assign it to the global window passing in the mock data
-
+```
 import Fetch from 'igsem-mock-fetch-api';
 
 window.fetch = Fetch({url1: {...fakeData});
-
+```
 example:
-
+```
 const urls = 
-
 {
     'http://test.com': {
         'body': "some text",
@@ -36,6 +35,7 @@ const urls =
         'status_code': 404
     }
 };
+```
 
 ### Requirements
 The library uses ES6 features, therefore is meant to be used only with webpack and Babel. 
