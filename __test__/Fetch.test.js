@@ -10,6 +10,10 @@ const urls = {
     'http://test3.com': {
         'body': "some text",
         'status_code': 404
+    },
+    'http://test4.com': {
+        'body': "error",
+        'status_code': 500
     }
 };
 
@@ -68,6 +72,16 @@ describe('Fetch', () => {
             expect(e.message).toEqual('Mock Data have no body!');
             done();
         }
-
+    });
+    it('fetch should return a Server Error', (done) => {
+        expect(fetch).toEqual(Fetch);
+        try {
+            const expectPromise = fetch(urls)('http://test4.com', {});
+            expect(false).toBeTruthy();
+            done();
+        } catch (e) {
+            expect(e.message).toEqual('Mocking Server Error');
+            done();
+        }
     });
 });
