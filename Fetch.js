@@ -17,11 +17,7 @@ function fakeResponse(data: {
     })
 }
 
-function promiseWrapper(func: Function): Promise<any> {
-    return new Promise(func);
-}
-
-const mockFetch = _.compose(promiseWrapper, _.curry((response, resolve) => resolve(response)), fakeResponse);
+const mockFetch = _.compose((f) => new Promise(f), _.curry((response, resolve) => resolve(response)), fakeResponse);
 
 
 const fetchReplacement = _.curry((oldFetch: Function, mockData: Object, input: string, config: Object) => {
