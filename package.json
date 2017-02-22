@@ -1,5 +1,5 @@
 {
-  "name": "mock-fetch-api",
+  "name": "igsem-mock-fetch-api",
   "version": "1.0.0",
   "description": "Assign to window.fetch to create a wrapper over the Fetch API, if mockData are supplied it will fake the call to your API and return a response with fake data: window.fetch = Fetch({url:{...data}})",
   "main": "index.js",
@@ -13,5 +13,8 @@
     "Fetch"
   ],
   "author": "Julius Koronci <jk@web-solutions.sk>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "ramda": "0.23.x"
+  }
 }
