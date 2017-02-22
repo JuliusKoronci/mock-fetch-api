@@ -5,6 +5,9 @@ function fakeResponse(data: {
     'body': Object,
     'status_code': ?number
 }): Response {
+    if (!data.body) {
+        throw new Error('Mock Data have no body!');
+    }
     return new Response(JSON.stringify(data.body), {
         'status': data.status_code || 200,
         headers: {

@@ -6,9 +6,7 @@ const urls = {
         'body': "some text",
         'status_code': 201
     },
-    'http://test2.com': {
-        'body': "some text"
-    },
+    'http://test2.com': {},
     'http://test3.com': {
         'body': "some text",
         'status_code': 404
@@ -59,5 +57,17 @@ describe('Fetch', () => {
             expect(data).toEqual(urls['http://test.com'].body);
             done();
         });
+    });
+    it('fetch should return an Error', (done) => {
+        expect(fetch).toEqual(Fetch);
+        try {
+            const expectPromise = fetch(urls)('http://test2.com', {});
+            expect(false).toBeTruthy();
+            done();
+        } catch (e) {
+            expect(e.message).toEqual('Mock Data have no body!');
+            done();
+        }
+
     });
 });
