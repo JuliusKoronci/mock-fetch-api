@@ -16,4 +16,4 @@ window.fetch = Fetch({url1: {...fakeData});
 
 ### Requirements
 The library uses ES6 features, therefore is meant to be used only with webpack and Babel. 
-It is based on functional programming and uses rambda for compose and curry
+It is based on functional programming and uses rambda for compose and curry. Type hinting is done via Flow.

@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "https://github.com/JuliusKoronci/mock-fetch-api",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [
     "API",
@@ -16,6 +16,7 @@
   "author": "Julius Koronci <jk@web-solutions.sk>",
   "license": "MIT",
   "dependencies": {
+    "jest": "^19.0.1",
     "ramda": "0.23.x"
   }
 }
