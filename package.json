@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Assign to window.fetch to create a wrapper over the Fetch API, if mockData are supplied it will fake the call to your API and return a response with fake data: window.fetch = Fetch({url:{...data}})",
   "main": "index.js",
+  "repository": "https://github.com/JuliusKoronci/mock-fetch-api",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
