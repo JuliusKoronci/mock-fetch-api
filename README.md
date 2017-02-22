@@ -22,9 +22,9 @@ window.fetch = Fetch({url1: {...fakeData});
 example:
 
 const urls = 
+
 {
     'http://test.com': {
-    
         'body': "some text",
         'status_code': 201
     },   
