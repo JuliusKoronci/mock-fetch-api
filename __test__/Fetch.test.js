@@ -12,7 +12,7 @@ const urls = {
         'status_code': 404
     },
     'http://test4.com': {
-        'body': "error",
+        'body': "",
         'status_code': 500
     }
 };

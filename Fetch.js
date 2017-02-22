@@ -5,7 +5,7 @@ function fakeResponse(data: {
     'body': Object,
     'status_code': ?number
 }): Response {
-    if (!data.body) {
+    if (typeof data.body === 'undefined') {
         throw new Error('Mock Data have no body!');
     }
     if (data.status_code && data.status_code >= 500) {
