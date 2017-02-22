@@ -53,7 +53,7 @@ describe('Fetch', () => {
             expect(response instanceof Response).toBeTruthy();
             expect(response.ok).not.toBeTruthy();
             return response;
-        }).then(response => response.json()).then((data, response) => {
+        }).then(response => response.json()).then((data) => {
             expect(data).toEqual(urls['http://test.com'].body);
             done();
         });
