@@ -14,9 +14,15 @@ function fakeResponse(data: {
     })
 }
 
+function promiseWrapper(func: Function): Promise<any> {
+    return new Promise(func);
+}
+
+const mockFetch = _.compose(promiseWrapper, _.curry((response, resolve) => resolve(response)), fakeResponse);
+
 
 const fetchReplacement = _.curry((oldFetch: Function, mockData: Object, input: string, config: Object) => {
-    return mockData[input] ? Promise.resolve(fakeResponse(mockData[input])) : oldFetch(input, config);
+    return mockData[input] ? mockFetch(mockData[input]) : oldFetch(input, config);
 });
 
 export default fetchReplacement(window.fetch);
