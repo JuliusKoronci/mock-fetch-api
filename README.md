@@ -9,6 +9,7 @@ for your backend without the need of a REST API.
 
 ### Instalation
 yarn add igsem-mock-fetch-api
+
 npm i --save-dev igsem-mock-fetch-api
  
 ### Instructions
