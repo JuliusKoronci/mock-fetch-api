@@ -14,6 +14,29 @@ import Fetch from 'igsem-mock-fetch-api';
 
 window.fetch = Fetch({url1: {...fakeData});
 
+example:
+
+const urls = 
+
+{
+
+    'http://test.com': {
+    
+        'body': "some text",
+        'status_code': 201
+    },
+    
+    'http://test2.com': {
+        'body': "some text"
+    },
+    
+    'http://test3.com': {
+        'body': "some text",
+        'status_code': 404
+    }
+    
+};
+
 ### Requirements
 The library uses ES6 features, therefore is meant to be used only with webpack and Babel. 
 It is based on functional programming and uses rambda for compose and curry. Type hinting is done via Flow.
