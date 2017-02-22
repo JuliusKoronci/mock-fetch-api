@@ -18,11 +18,11 @@ In your index.js file just import the script and assign it to the global window 
 ```
 import Fetch from 'igsem-mock-fetch-api';
 
-window.fetch = Fetch({url1: {...fakeData});
+window.fetch = Fetch(mockdata);
 ```
-example:
+example of mockData:
 ```
-const urls = 
+const mockData = 
 {
     'http://test.com': {
         'body': "some text",
