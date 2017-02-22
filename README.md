@@ -7,6 +7,16 @@ If the url is called with standard fetch, it will return the mock data without h
 This way you can easily start developing your frontend and create a json tree of fake data to implement 
 for your backend without the need of a REST API.
 
+### Common use case
+Imagine you have a React app in development. You just received the screen which needs to be implemented but the Backend team is behind. You know how the data should look like and you don't want to write unnecesary code just for mocking the BE. In this case the only thing you need to do is define the url of the back end in your mock data and a json with a body key to hold the response. You will still write your calls as normally without worrying about mocking because the mock-api will just wrap your regular Fetch API. You just need to have a if statement at the enrty point of your app which will init the fake fetch like:
+
+```
+use_mock_api && window.fetch = Fetch(mockdata);
+```
+
+Another advantage is that in the mockData you will build up exactly the structure you require and you just pass it to the BE team..I need this :)
+
+
 ### Instalation
 ```
 yarn add igsem-mock-fetch-api
