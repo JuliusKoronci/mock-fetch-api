@@ -47,6 +47,7 @@ describe('Fetch', () => {
             done();
         });
     });
+
     it('fetch should return a Promise which will resolve into 404 Response', (done) => {
         expect(fetch).toEqual(Fetch);
 
