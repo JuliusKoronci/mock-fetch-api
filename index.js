@@ -64,6 +64,11 @@ function validateData(data) {
 	}
 }
 
+function getCleanInput(input) {
+	var index = input.indexOf('?');
+	return test.substring(0, index !== -1 ? index : input.length);
+}
+
 var mockFetch = _ramda2.default.compose(function (f) {
 	return new Promise(f);
 }, _ramda2.default.curry(function (response, resolve) {
@@ -71,7 +76,7 @@ var mockFetch = _ramda2.default.compose(function (f) {
 }), fakeResponse);
 
 var fetchReplacement = _ramda2.default.curry(function (oldFetch, mockData, input, config) {
-	return mockData[input] ? mockFetch(mockData[input], config) : oldFetch(input, config);
+	return mockData[getCleanInput(input)] ? mockFetch(mockData[input], config) : oldFetch(input, config);
 });
 
 exports.default = fetchReplacement(window.fetch);

@@ -55,11 +55,16 @@ function validateData(data) {
 	}
 }
 
+function getCleanInput(input) {
+	const index = input.indexOf('?');
+	return test.substring(0, index !== -1 ? index : input.length);
+}
+
 const mockFetch = _.compose((f) => new Promise(f), _.curry((response, resolve) => resolve(response)), fakeResponse);
 
 
 const fetchReplacement = _.curry((oldFetch: Function, mockData: Object, input: string, config: Object) => {
-	return mockData[input] ? mockFetch(mockData[input], config) : oldFetch(input, config);
+	return mockData[getCleanInput(input)] ? mockFetch(mockData[input], config) : oldFetch(input, config);
 });
 
 export default fetchReplacement(window.fetch);
