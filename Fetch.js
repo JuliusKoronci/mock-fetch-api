@@ -67,7 +67,14 @@ function getCleanInput(input) {
 	return input.substring(0, index !== -1 ? index : input.length);
 }
 
-const mockFetch = _.compose((f) => new Promise(f), _.curry((response, resolve) => resolve(response)), fakeResponse, validateData);
+function getTimeout() {
+	return window.mock_fetch_timeout || 1000;
+}
+
+
+const mockFetch = _.compose((f) => new Promise(f), _.curry((response, resolve) => setTimeout(() => {
+	resolve(response);
+}, getTimeout())), fakeResponse, validateData);
 
 const fetchReplacement = _.curry((oldFetch: Function, mockData: Object, input: string, config: Object) => {
 	const i = getCleanInput(input);

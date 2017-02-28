@@ -21,7 +21,12 @@ use_mock_api && window.fetch = Fetch(mockdata);
 
 Another advantage is that in the mockData you will build up exactly the structure you require and you just pass it to the BE team..I need this :)
 
+### Simulating slow connection
 
+```
+// simulate 3 second latency
+window.mock_fetch_timeout = 3000;
+```
 ### Installation
 ```
 yarn add igsem-mock-fetch-api

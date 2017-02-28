@@ -34,7 +34,7 @@ describe('Fetch', () => {
 	
 	it('fetch should return a Promise which will resolve into a Response', (done) => {
 		expect(fetch).toEqual(Fetch);
-		
+		window.mock_fetch_timeout = 300;
 		const expectPromise = fetch(urls)('http://test.com', { method: 'GET' });
 		expect(expectPromise instanceof Promise).toBeTruthy();
 		
