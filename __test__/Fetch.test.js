@@ -48,6 +48,22 @@ describe('Fetch', () => {
 		});
 	});
 	
+	it('With querystring: fetch should return a Promise which will resolve into a Response', (done) => {
+		expect(fetch).toEqual(Fetch);
+		
+		const expectPromise = fetch(urls)('http://test.com?term=wtf', { method: 'GET' });
+		expect(expectPromise instanceof Promise).toBeTruthy();
+		
+		expectPromise.then(response => {
+			expect(response instanceof Response).toBeTruthy();
+			expect(response.ok).toBeTruthy();
+			return response;
+		}).then(response => response.json()).then((data, response) => {
+			expect(data).toEqual(urls['http://test.com'].body);
+			done();
+		});
+	});
+	
 	it('fetch should return a Promise which will resolve into 404 Response', (done) => {
 		expect(fetch).toEqual(Fetch);
 		
