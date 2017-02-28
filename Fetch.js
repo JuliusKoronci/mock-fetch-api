@@ -35,36 +35,37 @@ const HTTP_METHODS = {
 	},
 };
 
-function fakeResponse(data: {
-	'body': Object,
-	'status_code': ?number
-}, config = { method: 'GET' }): Response {
-	if (!HTTP_METHODS[config.method.toLowerCase()]) {
-		throw new Error('Unsupported HTTP method!');
+function fakeResponse(request: {
+	data:{
+		body: any,
+		status_code: ?number
+	},
+	'config':{
+		method: string
 	}
-	validateData(data);
-	return HTTP_METHODS[config.method.toLowerCase()](data, config);
+}): Response {
+	try {
+		return HTTP_METHODS[request.config.method.toLowerCase()](request.data, request.config);
+	} catch (e) {
+		throw new Error('HTTP Method not supported or invalid config!');
+	}
 }
 
-function validateData(data) {
+function validateData(data, config) {
 	if (typeof data.body === 'undefined') {
 		throw new Error('Mock Data have no body!');
 	}
 	if (data.status_code && data.status_code >= 500) {
 		throw new Error('Mocking Server Error');
 	}
+	
+	return { data, config };
 }
 
-function getCleanInput(input) {
-	const index = input.indexOf('?');
-	return test.substring(0, index !== -1 ? index : input.length);
-}
-
-const mockFetch = _.compose((f) => new Promise(f), _.curry((response, resolve) => resolve(response)), fakeResponse);
-
+const mockFetch = _.compose((f) => new Promise(f), _.curry((response, resolve) => resolve(response)), fakeResponse, validateData);
 
 const fetchReplacement = _.curry((oldFetch: Function, mockData: Object, input: string, config: Object) => {
-	return mockData[getCleanInput(input)] ? mockFetch(mockData[input], config) : oldFetch(input, config);
+	return mockData[input] ? mockFetch(mockData[input], config) : oldFetch(input, config);
 });
 
 export default fetchReplacement(window.fetch);
