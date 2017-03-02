@@ -6,7 +6,9 @@
   "repository": "https://github.com/JuliusKoronci/mock-fetch-api",
   "scripts": {
     "test": "jest",
-    "flow": "flow"
+    "flow": "flow",
+    "babelCompile": "babel Fetch.js --out-file index.js",
+    "build": "npm run test && npm run flow && npm run babelCompile"
   },
   "keywords": [
     "API",
