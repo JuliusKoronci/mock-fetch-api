@@ -7,10 +7,11 @@
   "scripts": {
     "test": "jest",
     "flow": "flow",
-    "git": "git add . && git commit -m'auto commit npm publish/version update script' && git push",
+    "gitCommit": "git add . && git commit -m'auto commit npm publish/version update script'",
+    "gitPush": "git push",
     "minorVersion": "npm version patch",
     "babelCompile": "babel Fetch.js --out-file index.js",
-    "build": "npm run test && npm run flow && npm run babelCompile && npm run git && npm run minorVersion",
+    "build": "npm run test && npm run flow && npm run babelCompile && npm run gitCommit && npm run minorVersion",
     "prepublish": "npm run build"
   },
   "keywords": [
