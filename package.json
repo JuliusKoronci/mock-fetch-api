@@ -8,7 +8,7 @@
     "test": "jest",
     "flow": "flow",
     "babelCompile": "babel Fetch.js --out-file index.js",
-    "customPublish": "npm run test && npm run flow && npm run babelCompile && git add . && git commit -m'auto commit' && npm version patch && npm run publish"
+    "customPublish": "npm run test && npm run flow && npm run babelCompile && git add . && git commit -m'auto commit npm publish/version update script' && npm version patch && git push"
   },
   "keywords": [
     "API",
