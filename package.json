@@ -7,7 +7,7 @@
   "scripts": {
     "test": "jest",
     "flow": "flow",
-    "gitCommit": "git add . && git commit -m'auto commit npm publish/version update script'",
+    "gitCommit": "git add . && git commit -m'auto commit npm publish/version update script' --allow-empty",
     "gitPush": "git push",
     "minorVersion": "npm version patch",
     "babelCompile": "babel Fetch.js --out-file index.js",
